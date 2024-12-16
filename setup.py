@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="smartML",
-    version="0.1.0",
+    version="0.1.1",
     description="An ML library for various tasks!",
     author="Şuayp Talha Kocabay",
     author_email="kocabaysuayptalha08@gmail.com",
