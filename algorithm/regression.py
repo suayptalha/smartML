@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 class LinearRegression:
     def __init__(self):
@@ -39,3 +40,47 @@ class LinearRegression:
 
     def equation(self):
         return f"y = {self.m:.2f}x + {self.b:.2f}"
+
+class LogisticRegression:
+    def __init__(self, learning_rate=0.01, epochs=1000):
+        self.learning_rate = learning_rate
+        self.epochs = epochs
+        self.weights = None
+        self.bias = 0
+
+    def sigmoid(self, z):
+        return 1 / (1 + np.exp(-z))
+
+    def binary_cross_entropy(self, y_true, y_pred):
+        epsilon = 1e-15
+        y_pred = np.clip(y_pred, epsilon, 1 - epsilon)
+        return -np.mean(y_true * np.log(y_pred) + (1 - y_true) * np.log(1 - y_pred))
+
+    def fit(self, X, y):
+        n_samples, n_features = X.shape
+        self.weights = np.zeros(n_features)
+        self.bias = 0
+
+        for epoch in range(self.epochs):
+            linear_model = np.dot(X, self.weights) + self.bias
+            y_pred = self.sigmoid(linear_model)
+            dw = (1 / n_samples) * np.dot(X.T, (y_pred - y))
+            db = (1 / n_samples) * np.sum(y_pred - y)
+            self.weights -= self.learning_rate * dw
+            self.bias -= self.learning_rate * db
+
+            if epoch % 100 == 0:
+                loss = self.binary_cross_entropy(y, y_pred)
+                print(f"Epoch {epoch}, Loss: {loss:.4f}")
+
+    def predict_proba(self, X):
+        linear_model = np.dot(X, self.weights) + self.bias
+        return self.sigmoid(linear_model)
+
+    def predict(self, X):
+        y_pred = self.predict_proba(X)
+        return [1 if i > 0.5 else 0 for i in y_pred]
+
+    def equation(self):
+        coef_str = " + ".join([f"{w:.2f}*x{i}" for i, w in enumerate(self.weights, start=1)])
+        return f"y = sigmoid({coef_str} + {self.bias:.2f})"
