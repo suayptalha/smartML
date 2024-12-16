@@ -3,6 +3,7 @@ MANIFEST.in
 README.md
 setup.py
 smartML/__init__.py
+smartML/utils.py
 smartML.egg-info/PKG-INFO
 smartML.egg-info/SOURCES.txt
 smartML.egg-info/dependency_links.txt
