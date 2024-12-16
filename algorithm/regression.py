@@ -84,3 +84,28 @@ class LogisticRegression:
     def equation(self):
         coef_str = " + ".join([f"{w:.2f}*x{i}" for i, w in enumerate(self.weights, start=1)])
         return f"y = sigmoid({coef_str} + {self.bias:.2f})"
+
+class MultivariateLinearRegression:
+    def __init__(self):
+        self.weights = None
+        self.bias = 0
+
+    def fit(self, X, y, learning_rate=0.01, epochs=1000):
+        n_samples, n_features = X.shape
+        self.weights = np.zeros(n_features)
+        self.bias = 0
+
+        for _ in range(epochs):
+            y_pred = np.dot(X, self.weights) + self.bias
+            dw = (1 / n_samples) * np.dot(X.T, (y_pred - y))
+            db = (1 / n_samples) * np.sum(y_pred - y)
+
+            self.weights -= learning_rate * dw
+            self.bias -= learning_rate * db
+
+    def predict(self, X):
+        return np.dot(X, self.weights) + self.bias
+
+    def equation(self):
+        coef_str = " + ".join([f"{w:.2f}*x{i}" for i, w in enumerate(self.weights, start=1)])
+        return f"y = {coef_str} + {self.bias:.2f}"
