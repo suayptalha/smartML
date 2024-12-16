@@ -1,0 +1,6 @@
+include LICENSE
+include README.md
+recursive-include smartML *.py
+recursive-include algorithm *.py
+recursive-include dataset *.py
+recursive-include validation *.py
