@@ -109,3 +109,26 @@ class MultivariateLinearRegression:
     def equation(self):
         coef_str = " + ".join([f"{w:.2f}*x{i}" for i, w in enumerate(self.weights, start=1)])
         return f"y = {coef_str} + {self.bias:.2f}"
+
+class MulticlassLogisticRegression:
+    def __init__(self, learning_rate=0.01, epochs=1000):
+        self.learning_rate = learning_rate
+        self.epochs = epochs
+        self.classes = None
+        self.models = {}
+
+    def sigmoid(self, z):
+        return 1 / (1 + np.exp(-z))
+
+    def fit(self, X, y):
+        self.classes = np.unique(y)
+        for c in self.classes:
+            binary_y = np.where(y == c, 1, 0)
+            model = LogisticRegression(self.learning_rate, self.epochs)
+            model.fit(X, binary_y)
+            self.models[c] = model
+
+    def predict(self, X):
+        probabilities = {c: self.models[c].predict_proba(X) for c in self.classes}
+        probabilities = np.array([probabilities[c] for c in self.classes]).T
+        return np.argmax(probabilities, axis=1)
