@@ -4,7 +4,7 @@ Welcome to **SmartML**, the ultimate Python library designed to simplify and acc
 
 ---
 
-## 🌟 Features  
+## Features  
 
 - **Data Preprocessing**: Handle missing values, normalize datasets, encode categorical variables, and more with a single function call.  
 - **Model Building**: Create powerful machine learning models using built-in support for popular algorithms like Random Forest, XGBoost, and SVM.  
@@ -13,7 +13,7 @@ Welcome to **SmartML**, the ultimate Python library designed to simplify and acc
 
 ---
 
-## 🚀 Installation  
+## Installation  
 
 Install SmartML effortlessly with pip:  
 
@@ -21,7 +21,7 @@ Install SmartML effortlessly with pip:
 pip install smartml
 ```
 
-## 🚀 How to Use
+## How to Use
 ```py
 from smartML.algorithm.tree_algorithm import DecisionTree
 
@@ -29,17 +29,17 @@ tree = DecisionTree()
 ```
 This simple workflow will help you get started with data preprocessing, model training, evaluation, and result visualization in no time.
 
-## 🧑‍💻 Contribution
+## Contribution
 We welcome contributions from the community! Here's how you can get involved:
 
 Fork the repository.
 Create a feature branch for your work.
 Submit a pull request.
 
-## 📜 License
+## License
 This project is licensed under the MIT License. You are free to use, modify, and distribute this library.
 
-## 💬 Feedback and Support
+## Feedback and Support
 Have any questions, suggestions, or feature requests?
 
 Open an issue on GitHub.
