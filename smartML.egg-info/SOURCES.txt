@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+smartML/__init__.py
+smartML.egg-info/PKG-INFO
+smartML.egg-info/SOURCES.txt
+smartML.egg-info/dependency_links.txt
+smartML.egg-info/requires.txt
+smartML.egg-info/top_level.txt
+smartML/algorithm/algorithms.py
+smartML/algorithm/regression.py
+smartML/algorithm/tree_algorithm.py
+smartML/dataset/data.py
+smartML/validation/cross_validation.py
